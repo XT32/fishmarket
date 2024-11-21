@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"kelompok4.fishmarket.dao","l":"baseDAO"},{"p":"kelompok4.fishmarket","l":"FishMarket"},{"p":"controller","l":"LoginController"},{"p":"controller","l":"RegisterController"}];updateSearchResults();
