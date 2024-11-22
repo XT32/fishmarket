@@ -11,7 +11,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>kelompok4.fishmarket.FishMarket</exec.mainClass>
-        <!-- JavaFX version -->
         <javafx.version>23.0.1</javafx.version>
     </properties>
 
@@ -37,13 +36,15 @@
             <version>8.0.33</version>
         </dependency>
         
-        <!-- Junit -->
+        <!-- JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.11.3</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -51,35 +52,12 @@
             <scope>test</scope>
         </dependency>
         
-        <dependencies>
-            <!-- BCrypt for password hashing -->
-            <dependency>
-                <groupId>org.mindrot</groupId>
-                <artifactId>jbcrypt</artifactId>
-                <version>0.4</version>
-            </dependency>
-    
-            <!-- Dependensi lain yang Anda perlukan -->
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>5.7.0</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-        
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.2</version> <!-- Atur versi plugin sesuai kebutuhan -->
-                </plugin>
-            </plugins>
-        </build>
-
-
-
+        <!-- BCrypt for password hashing -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,6 +94,13 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Surefire Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
