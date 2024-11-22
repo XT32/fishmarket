@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class FishMarket extends Application {
 
     public static void main(String[] args) {
-        // Launch the JavaFX application
         launch(args);
     }
 
