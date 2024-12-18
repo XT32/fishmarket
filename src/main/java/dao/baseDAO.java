@@ -14,7 +14,6 @@ public class baseDAO {
     private static final String USER = "root";
     private static final String PASSWORD = "adminxt";
 
-    // Method untuk mendapatkan koneksi
     public static Connection getConnection() {
         try {
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

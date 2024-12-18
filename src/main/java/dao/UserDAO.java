@@ -8,16 +8,15 @@ public class UserDAO {
     public boolean registerUser(User user) {
         String query = "INSERT INTO users (nama_lengkap, username, alamat, email, password) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = baseDAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            // Mengisi parameter query
             stmt.setString(1, user.getNamaLengkap());
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getAlamat());
             stmt.setString(4, user.getEmail());
             stmt.setString(5, user.getPassword());
-            return stmt.executeUpdate() > 0; // Return true jika data berhasil disimpan
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error during user registration: " + e.getMessage());
-            return false; // Return false jika terjadi kesalahan
+            return false;
         }
     }
 
@@ -25,12 +24,9 @@ public class UserDAO {
     public User loginUser(String username, String password) {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         try (Connection conn = baseDAO.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            // Mengisi parameter query
             stmt.setString(1, username);
-            stmt.setString(2, password); // Password langsung dibandingkan
+            stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
-
-            // Jika username dan password cocok, buat objek User
             if (rs.next()) {
                 return new User(
                     rs.getString("nama_lengkap"),
@@ -43,6 +39,6 @@ public class UserDAO {
         } catch (SQLException e) {
             System.err.println("Error during user login: " + e.getMessage());
         }
-        return null; // Return null jika login gagal
+        return null;
     }
 }

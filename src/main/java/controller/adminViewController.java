@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author imdaq
  */
+
 public class adminViewController implements Initializable{
     
     @FXML
@@ -84,11 +85,11 @@ public class adminViewController implements Initializable{
     }
    
     public void Initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

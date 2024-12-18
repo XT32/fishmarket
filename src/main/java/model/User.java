@@ -1,6 +1,7 @@
 package model;
 
 public class User {
+
     private String namaLengkap;
     private String username;
     private String alamat;
@@ -59,16 +60,15 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-               "namaLengkap='" + namaLengkap + '\'' +
-               ", username='" + username + '\'' +
-               ", alamat='" + alamat + '\'' +
-               ", email='" + email + '\'' +
-               '}';
+        return "User{"
+                + "namaLengkap='" + namaLengkap + '\''
+                + ", username='" + username + '\''
+                + ", alamat='" + alamat + '\''
+                + ", email='" + email + '\''
+                + '}';
     }
 
     public boolean isPasswordValid() {
-        // Check password length or any other business logic
         return this.password != null && this.password.length() >= 6;
     }
 }
