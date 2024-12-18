@@ -1,9 +1,0 @@
-data\data.class
-service\UserService.class
-com\mycompany\newfishmarket\controller\adminViewController.class
-com\mycompany\newfishmarket\controller\fishCardController.class
-dao\baseDAO.class
-controller\FXMLController.class
-dao\UserDAO.class
-main\Newfishmarket.class
-model\User.class

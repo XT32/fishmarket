@@ -8,8 +8,8 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>23</java.version> <!-- Sesuaikan dengan versi JDK Anda -->
-        <javafx.version>23.0.1</javafx.version> <!-- JavaFX 23 -->
+        <java.version>23</java.version>
+        <javafx.version>23.0.1</javafx.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -87,9 +87,9 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.mycompany.newfishmarket.Newfishmarket</mainClass> <!-- Sesuaikan dengan nama kelas utama Anda -->
-                    <modulePath>${java.home}/lib/modules</modulePath> <!-- Jika menggunakan JDK 11 atau lebih tinggi -->
-                    <addModules>javafx.controls,javafx.fxml</addModules> <!-- Menambahkan modul JavaFX yang diperlukan -->
+                    <mainClass>Newfishmarket</mainClass>
+                    <modulePath>${java.home}/lib/modules</modulePath>
+                    <addModules>javafx.controls,javafx.fxml</addModules>
                 </configuration>
                 <executions>
                     <execution>
@@ -98,17 +98,28 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
                     <execution>
-                        <id>debug</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                         <configuration>
-                            <options>
-                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
-                            </options>
+                            <executable>mvn</executable>
+                            <arguments>
+                                <argument>clean</argument>
+                                <argument>install</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

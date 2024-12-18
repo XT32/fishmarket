@@ -10,7 +10,7 @@ import java.sql.SQLException;
  */
 
 public class baseDAO {
-    private static final String URL = "jdbc:mysql://localhost:3307/fishmarket";
+    private static final String URL = "jdbc:mysql://192.168.1.6:3307/fishmarket";
     private static final String USER = "root";
     private static final String PASSWORD = "adminxt";
 
