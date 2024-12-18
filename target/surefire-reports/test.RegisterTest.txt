@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: test.RegisterTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in test.RegisterTest
-testRegisterUser  Time elapsed: 0 s  <<< ERROR!
-java.lang.RuntimeException: Pendaftaran user gagal: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
-	at test.RegisterTest.testRegisterUser(RegisterTest.java:24)
-
