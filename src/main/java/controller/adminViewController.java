@@ -13,24 +13,46 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 /**
  *
  * @author imdaq
  */
 
-public class adminViewController implements Initializable{
-    
+public class adminViewController implements Initializable {
+
+    @FXML
+    private AnchorPane Dashboard_form;
+
     @FXML
     private Button Inventory_deleteButton;
 
     @FXML
-    private AnchorPane adminView;
-    
+    private AnchorPane Numberof_customer;
+
     @FXML
-    private Button customer_button;
+    private AnchorPane adminView;
 
     @FXML
     private Button dashboard_button;
+
+    @FXML
+    private Button dataBeli_button;
+
+    @FXML
+    private Button dataCustomer_button;
+
+    @FXML
+    private Button dataJual_button;
+
+    @FXML
+    private AnchorPane databeli_form;
+
+    @FXML
+    private AnchorPane datacustomer_form;
+
+    @FXML
+    private AnchorPane datajual_form;
 
     @FXML
     private Button display_button;
@@ -79,17 +101,60 @@ public class adminViewController implements Initializable{
 
     @FXML
     private Button logout_button;
-    
-    public void displayUsername(){
-    
-    }
-   
-    public void Initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
+    @FXML
+    private AnchorPane numberofsold;
+
+    @FXML
+    private AnchorPane scroll_dashboardForm;
+
+    @FXML
+    private TableView<?> tabeldataPenjualan;
+
+    @FXML
+    private AnchorPane todays_income;
+
+    @FXML
+    private AnchorPane total_income;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        showDashboard();
+    }
+
+    @FXML
+    private void showDashboard() {
+        setVisiblePage(Dashboard_form);
+    }
+    
+    @FXML
+    private void showInventory() {
+        setVisiblePage(inventory_form);
+    }
+
+    @FXML
+    private void showDataJual() {
+        setVisiblePage(datajual_form);
+    }
+
+    @FXML
+    private void showDataBeli() {
+        setVisiblePage(databeli_form);
+    }
+
+    @FXML
+    private void showDataCustomer() {
+        setVisiblePage(datacustomer_form);
+    }
+
+    private void setVisiblePage(AnchorPane visiblePage) {
+
+        Dashboard_form.setVisible(false);
+        inventory_form.setVisible(false);
+        datajual_form.setVisible(false);
+        databeli_form.setVisible(false);
+        datacustomer_form.setVisible(false);
+
+        visiblePage.setVisible(true);
     }
 }

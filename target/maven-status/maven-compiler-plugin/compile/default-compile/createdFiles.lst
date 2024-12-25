@@ -1,9 +1,10 @@
 data\data.class
+controller\UserViewController.class
 service\UserService.class
 com\mycompany\newfishmarket\controller\fishCardController.class
 controller\adminViewController.class
 dao\baseDAO.class
-controller\FXMLController.class
 dao\UserDAO.class
 main\Newfishmarket.class
+controller\LoginRegisterViewController.class
 model\User.class

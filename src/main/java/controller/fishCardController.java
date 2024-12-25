@@ -10,5 +10,5 @@ package controller;
  */
 
 public class fishCardController {
-    
+
 }

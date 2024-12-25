@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 /**
  * Aplikasi utama
  */
+
 public class Newfishmarket extends Application {
 
     private static final Logger LOGGER = Logger.getLogger(Newfishmarket.class.getName());
@@ -25,27 +26,34 @@ public class Newfishmarket extends Application {
      *
      * @param stage Stage utama untuk aplikasi.
      */
+    
     @Override
     public void start(Stage stage) {
         try {
-            String fxmlPath = "/view/loginRegisterView.fxml";
-            System.out.println("Mencari FXML di: " + getClass().getResource(fxmlPath));
+            String fxmlPath = "view/loginRegisterView.fxml";
 
-            URL fxmlURL = getClass().getResource(fxmlPath);
+            URL fxmlURL = getClass().getClassLoader().getResource(fxmlPath);
             if (fxmlURL == null) {
-                throw new IOException("File FXML tidak ditemukan di: " + fxmlPath);
+                LOGGER.log(Level.SEVERE, "File FXML tidak ditemukan di classpath: {0}", fxmlPath);
+                throw new IOException("File FXML tidak ditemukan di classpath: " + fxmlPath);
             }
+
+            LOGGER.log(Level.INFO, "Memuat file FXML dari: {0}", fxmlURL);
 
             FXMLLoader loader = new FXMLLoader(fxmlURL);
             Parent root = loader.load();
-            Scene scene = new Scene(root);
 
+            Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Fish Market Login");
             stage.show();
 
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Gagal memuat file FXML", e);
             showErrorAlert("Error", "Gagal memuat file FXML: " + e.getMessage());
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Kesalahan tidak terduga", e);
+            showErrorAlert("Error", "Terjadi kesalahan tidak terduga: " + e.getMessage());
         }
     }
 
@@ -55,12 +63,13 @@ public class Newfishmarket extends Application {
      * @param title Judul dialog error.
      * @param message Pesan error yang ditampilkan.
      */
+    
     private void showErrorAlert(String title, String message) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle(title);
-        alert.setHeaderText(null);  // Tidak ada header di alert
+        alert.setHeaderText(null);
         alert.setContentText(message);
-        alert.showAndWait();  // Menunggu user menutup alert
+        alert.showAndWait();
     }
 
     /**
@@ -68,6 +77,7 @@ public class Newfishmarket extends Application {
      *
      * @param args Parameter untuk aplikasi (tidak digunakan di sini).
      */
+    
     public static void main(String[] args) {
         launch(args);
     }

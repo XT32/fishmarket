@@ -7,7 +7,7 @@
 }
 
 .head-label{
-    -fx-border-color:
+    -fx-border-color:#fff;
     -fx-border-widht: 0 0 0 5px;
     -fx-padding: 0 0 0 5px;
 }
@@ -39,5 +39,9 @@
 .create-btn:hover{
     -fx-background-color: #fff;
     -fx-text-fill: #000;
+}
+.side-form {
+    -fx-background-color: linear-gradient(to bottom right, #211dff, #12c7e7);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 5);
 }
 
