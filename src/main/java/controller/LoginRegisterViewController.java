@@ -2,7 +2,6 @@ package controller;
 
 import service.UserService;
 import model.User;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -99,6 +97,14 @@ public class LoginRegisterViewController implements Initializable {
                 return;
             }
 
+            // Check if the login is for admin
+            if ("admin".equals(username) && "admin123".equals(password)) {
+                showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome, Admin!");
+                loadAdminView();
+                return;
+            }
+
+            // Regular user login
             User user = userService.loginUser(username, password);
             if (user != null) {
                 showAlert(Alert.AlertType.INFORMATION, "Login Success", "Welcome, " + user.getNamaLengkap());
@@ -140,7 +146,6 @@ public class LoginRegisterViewController implements Initializable {
 
             if (registrationSuccess) {
                 showAlert(Alert.AlertType.INFORMATION, "Registration Success", "Account created successfully!");
-
                 switchFormToLogin();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Registration Failed", "An error occurred. Try again.");
@@ -153,7 +158,7 @@ public class LoginRegisterViewController implements Initializable {
     @FXML
     public void switchForm(ActionEvent event) {
         if (event.getSource() == side_alreadyHave1 || event.getSource() == side_createButton1) {
-            su_signupForm.setVisible(false);
+            su_signupForm.setVisible(false); 
             si_loginForm.setVisible(true);
             side_formRight.setVisible(false);
             side_formLeft.setVisible(true);
@@ -198,6 +203,19 @@ public class LoginRegisterViewController implements Initializable {
             userViewController.setUser(user);
         } catch (IOException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Unable to load user view: " + e.getMessage());
+        }
+    }
+
+    private void loadAdminView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/adminView.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) si_loginButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Unable to load admin view: " + e.getMessage());
         }
     }
 

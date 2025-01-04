@@ -91,7 +91,6 @@
                                                 </AnchorPane>
                                                 <AnchorPane fx:id="todays_income" layoutX="262.0" layoutY="11.0" prefHeight="119.0" prefWidth="248.0" styleClass="nav_form" stylesheets="@../css/userView.css">
                                                    <children>
-                                                      <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" layoutX="14.0" layoutY="86.0" size="2CM" wrappingWidth="15.257105827331543" />
                                                       <Label layoutX="150.0" layoutY="88.0" text="Today's Income" textFill="WHITE" />
                                                       <Label layoutX="229.0" layoutY="12.0" text="0" />
                                                       <ImageView fitHeight="80.0" fitWidth="107.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -103,7 +102,6 @@
                                                 </AnchorPane>
                                                 <AnchorPane fx:id="total_income" layoutX="517.0" layoutY="11.0" prefHeight="119.0" prefWidth="248.0" styleClass="nav_form" stylesheets="@../css/userView.css">
                                                    <children>
-                                                      <FontAwesomeIconView fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="86.0" size="2CM" wrappingWidth="15.257105827331543" />
                                                       <Label layoutX="164.0" layoutY="88.0" text="Total Income" textFill="WHITE" />
                                                       <Label layoutX="230.0" layoutY="12.0" text="0" />
                                                       <ImageView fitHeight="80.0" fitWidth="107.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -115,7 +113,6 @@
                                                 </AnchorPane>
                                                 <AnchorPane fx:id="numberofsold" layoutX="771.0" layoutY="11.0" prefHeight="119.0" prefWidth="248.0" styleClass="nav_form" stylesheets="@../css/userView.css">
                                                    <children>
-                                                      <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_CART" layoutX="14.0" layoutY="86.0" size="2CM" wrappingWidth="15.257105827331543" />
                                                       <Label layoutX="116.0" layoutY="88.0" text="Number of Sold Product" textFill="WHITE" />
                                                       <Label layoutX="226.0" layoutY="12.0" text="0" />
                                                       <ImageView fitHeight="80.0" fitWidth="107.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
