@@ -26,16 +26,11 @@ public class adminViewController implements Initializable {
     private TableView<Ikan> inventory_table;
 
     @FXML
-    private TableColumn<Ikan, Integer> inventory_IDikan;
-
+    private TableColumn<Ikan, Number> inventory_IDikan; // Menggunakan Number untuk IntegerProperty
     @FXML
     private TableColumn<Ikan, String> inventory_namaIkan, inventory_gambarIkan;
-
     @FXML
-    private TableColumn<Ikan, Double> inventory_hargaIkan;
-
-    @FXML
-    private TableColumn<Ikan, Integer> inventory_stokIkan, inventory_idNelayan;
+    private TableColumn<Ikan, Number> inventory_hargaIkan, inventory_stokIkan, inventory_idNelayan;
 
     @FXML
     private TextField inventory_namaField, inventory_hargaField, inventory_gambarField, inventory_stokField, inventory_idNelayanField;
@@ -56,12 +51,12 @@ public class adminViewController implements Initializable {
         adminDAO = new AdminDAO(connection);
 
         // Set kolom tabel inventory
-        inventory_IDikan.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        inventory_IDikan.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         inventory_namaIkan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
-        inventory_hargaIkan.setCellValueFactory(cellData -> cellData.getValue().hargaProperty().asObject());
+        inventory_hargaIkan.setCellValueFactory(cellData -> cellData.getValue().hargaProperty());
         inventory_gambarIkan.setCellValueFactory(cellData -> cellData.getValue().gambarIkanProperty());
-        inventory_stokIkan.setCellValueFactory(cellData -> cellData.getValue().stokProperty().asObject());
-        inventory_idNelayan.setCellValueFactory(cellData -> cellData.getValue().idNelayanProperty().asObject());
+        inventory_stokIkan.setCellValueFactory(cellData -> cellData.getValue().stokProperty());
+        inventory_idNelayan.setCellValueFactory(cellData -> cellData.getValue().idNelayanProperty());
 
         loadInventoryData();
 

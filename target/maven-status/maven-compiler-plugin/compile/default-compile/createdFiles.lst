@@ -4,6 +4,7 @@ dao\InventoryItem.class
 service\UserService.class
 dao\AdminDAO.class
 utils\baseDAO.class
+controller\LoginController.class
 controller\FXMLController.class
 dao\UserDAO.class
 model\Customer.class
@@ -15,6 +16,7 @@ model\admin.class
 controller\adminViewController.class
 InventoryDAO.class
 model\Sale.class
+dao\baseDAO.class
 dao\PembelianDAO.class
 model\Pesanan.class
 model\Penjualan.class
