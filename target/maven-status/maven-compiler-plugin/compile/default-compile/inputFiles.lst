@@ -1,5 +1,5 @@
 D:\Git\fishmarket\src\main\java\model\Customer.java
-D:\Git\fishmarket\src\main\java\controller\FXMLController.java
+D:\Git\fishmarket\src\main\java\model\Keranjang.java
 D:\Git\fishmarket\src\main\java\data\data.java
 D:\Git\fishmarket\src\main\java\service\UserService.java
 D:\Git\fishmarket\src\main\java\dao\PembelianDAO.java
@@ -16,7 +16,6 @@ D:\Git\fishmarket\src\main\java\model\Penjualan.java
 D:\Git\fishmarket\src\main\java\dao\IkanDAO.java
 D:\Git\fishmarket\src\main\java\utils\baseDAO.java
 D:\Git\fishmarket\src\main\java\model\admin.java
-D:\Git\fishmarket\src\main\java\controller\LoginController.java
 D:\Git\fishmarket\src\main\java\dao\UserDAO.java
 D:\Git\fishmarket\src\main\java\dao\InventoryItem.java
 D:\Git\fishmarket\src\main\java\controller\fishCardController.java

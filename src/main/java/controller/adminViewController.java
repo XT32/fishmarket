@@ -16,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class adminViewController implements Initializable {
 
@@ -26,20 +27,19 @@ public class adminViewController implements Initializable {
     private TableView<Ikan> inventory_table;
 
     @FXML
-    private TableColumn<Ikan, Number> inventory_IDikan; // Menggunakan Number untuk IntegerProperty
+    private TableColumn<Ikan, Number> inventory_IDikan, inventory_stok, inventory_harga;
+
     @FXML
     private TableColumn<Ikan, String> inventory_namaIkan, inventory_gambarIkan;
+
     @FXML
-    private TableColumn<Ikan, Number> inventory_hargaIkan, inventory_stokIkan, inventory_idNelayan;
+    private TableColumn<Ikan, Number> inventory_hargaIkan;
 
     @FXML
     private TextField inventory_namaField, inventory_hargaField, inventory_gambarField, inventory_stokField, inventory_idNelayanField;
 
     @FXML
     private Button inventory_annButton, inventory_updateButton, inventory_deleteButton, inventory_clearButton;
-
-    @FXML
-    private ImageView inventory_image_view;
 
     private Connection connection;
     private AdminDAO adminDAO;
@@ -51,16 +51,14 @@ public class adminViewController implements Initializable {
         adminDAO = new AdminDAO(connection);
 
         // Set kolom tabel inventory
-        inventory_IDikan.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        inventory_namaIkan.setCellValueFactory(cellData -> cellData.getValue().namaProperty());
-        inventory_hargaIkan.setCellValueFactory(cellData -> cellData.getValue().hargaProperty());
-        inventory_gambarIkan.setCellValueFactory(cellData -> cellData.getValue().gambarIkanProperty());
-        inventory_stokIkan.setCellValueFactory(cellData -> cellData.getValue().stokProperty());
-        inventory_idNelayan.setCellValueFactory(cellData -> cellData.getValue().idNelayanProperty());
-
+        inventory_IDikan.setCellValueFactory(new PropertyValueFactory<>("idIkan"));
+        inventory_namaIkan.setCellValueFactory(new PropertyValueFactory<>("namaIkan"));
+        inventory_stok.setCellValueFactory(new PropertyValueFactory<>("stokIkan"));
+        inventory_harga.setCellValueFactory(new PropertyValueFactory<>("hargaIkan"));
+ 
         loadInventoryData();
 
-        // CRUD Button Actions
+        // Tombol CRUD
         inventory_annButton.setOnAction(e -> addIkan());
         inventory_updateButton.setOnAction(e -> updateIkan());
         inventory_deleteButton.setOnAction(e -> deleteIkan());
@@ -68,22 +66,29 @@ public class adminViewController implements Initializable {
     }
 
     private void connectToDatabase() {
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/fishmarket", "root", "");
-        } catch (SQLException e) {
-            e.printStackTrace();
+    try {
+        connection = DriverManager.getConnection("jdbc:mysql://34.44.81.201:3306/fishmarket", "username", "password");
+        if (connection != null) {
+            System.out.println("Connection to database established successfully.");
+        } else {
+            throw new SQLException("Failed to establish connection to database.");
         }
+    } catch (SQLException e) {
+        showAlert(Alert.AlertType.ERROR, "Database Connection Failed", "Error: " + e.getMessage());
+        e.printStackTrace();
     }
+}
 
     private void loadInventoryData() {
-        try {
-            List<Ikan> list = adminDAO.getAllIkan();
-            ikanList = FXCollections.observableArrayList(list);
-            inventory_table.setItems(ikanList);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        List<Ikan> list = adminDAO.getAllIkan(); // Ambil data dari database
+        if (list != null) {
+            ikanList = FXCollections.observableArrayList(list); // Konversi ke ObservableList
+            inventory_table.setItems(ikanList); // Set data ke TableView
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Data Load Failed", "No inventory data found.");
         }
-    }
+}
+
 
     private void addIkan() {
         try {
@@ -94,7 +99,7 @@ public class adminViewController implements Initializable {
             int idNelayan = Integer.parseInt(inventory_idNelayanField.getText());
 
             Ikan ikan = new Ikan(0, nama, harga, gambar, stok, idNelayan);
-            adminDAO.addIkan(ikan);
+            adminDAO.addIkan(ikan); // Tambahkan data ke database
             loadInventoryData();
             clearInventoryFields();
             showAlert(Alert.AlertType.INFORMATION, "Success", "Data ikan berhasil ditambahkan.");
@@ -118,13 +123,13 @@ public class adminViewController implements Initializable {
             int stok = Integer.parseInt(inventory_stokField.getText());
             int idNelayan = Integer.parseInt(inventory_idNelayanField.getText());
 
-            selectedIkan.setNama(nama);
+            selectedIkan.setnamaIkan(nama);
             selectedIkan.setHarga(harga);
             selectedIkan.setGambarIkan(gambar);
             selectedIkan.setStok(stok);
             selectedIkan.setIdNelayan(idNelayan);
 
-            adminDAO.updateIkan(selectedIkan);
+            adminDAO.updateIkan(selectedIkan); // Perbarui data di database
             loadInventoryData();
             clearInventoryFields();
             showAlert(Alert.AlertType.INFORMATION, "Success", "Data ikan berhasil diperbarui.");
@@ -142,7 +147,7 @@ public class adminViewController implements Initializable {
                 return;
             }
 
-            adminDAO.deleteIkan(selectedIkan.getId());
+            adminDAO.deleteIkan(selectedIkan.getIdIkan()); // Hapus data dari database
             loadInventoryData();
             clearInventoryFields();
             showAlert(Alert.AlertType.INFORMATION, "Success", "Data ikan berhasil dihapus.");
@@ -158,7 +163,6 @@ public class adminViewController implements Initializable {
         inventory_gambarField.clear();
         inventory_stokField.clear();
         inventory_idNelayanField.clear();
-        inventory_image_view.setImage(null);
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {

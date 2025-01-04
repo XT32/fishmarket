@@ -12,7 +12,7 @@ public class baseDAO {
 
     private static final String URL = "jdbc:mysql://localhost:3307/fishmarket";
     private static final String USER = "root";
-    private static final String PASSWORD = "adminxt";
+    private static final String PASSWORD = "password";
 
     public static Connection getConnection() {
         try {

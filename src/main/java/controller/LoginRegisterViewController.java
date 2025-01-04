@@ -141,7 +141,7 @@ public class LoginRegisterViewController implements Initializable {
                 return;
             }
 
-            User user = new User(namaLengkap, username, alamat, email, password);
+            User user = new User(0, username, email, password, alamat, namaLengkap);
             boolean registrationSuccess = userService.registerUser(user);
 
             if (registrationSuccess) {
@@ -208,7 +208,8 @@ public class LoginRegisterViewController implements Initializable {
 
     private void loadAdminView() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/adminView.fxml"));
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/view/adminView.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) si_loginButton.getScene().getWindow();
             Scene scene = new Scene(root);

@@ -61,8 +61,6 @@ public class UserViewController implements Initializable {
     @FXML
     private AnchorPane user_profile;
 
-    @FXML
-    private TextField no_profile;
 
     @FXML
     private TextField email_profile;
@@ -102,7 +100,6 @@ public class UserViewController implements Initializable {
             emailLabel.setText(currentUser.getEmail());
             alamatLabel.setText(currentUser.getAlamat());
 
-            no_profile.setText(currentUser.getNoProfile());
             email_profile.setText(currentUser.getEmail());
             alamat_profile.setText(currentUser.getAlamat());
             alamat_profile1.setText(currentUser.getAlamat());
